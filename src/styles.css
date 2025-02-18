@@ -25,7 +25,7 @@
 }
 .nav {
   display: flex;
-  gap: 1rem;
+  gap: 4rem;
   margin: 1rem;
 }
 .nav > button {
@@ -33,7 +33,35 @@
   background: none;
   color: white;
   text-decoration: underline;
+  min-width: fit-content;
+  max-width: fit-content;
+  transition: transform 0.3s ease;
 }
-nav > button:hover {
+.nav > button:hover {
   cursor: pointer;
+  transform: scale(1.1);
+}
+.nav > button:active {
+  transform: scale(0.9);
+}
+.search-box {
+  border-radius: 1rem;
+  border: solid white 1px;
+  padding-inline: 0.5rem;
+  background-color: white;
+  width: 20%;
+  transform: transition 0.3s ease;
+}
+.search-box:hover {
+  transform: scale(1.1);
+}
+.search-box > input {
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  width: 50%;
+}
+.search-input:focus {
+  border: none;
+  outline: none;
 }

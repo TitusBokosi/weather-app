@@ -31,5 +31,6 @@ export function loadHomePage(container) {
   const searchInput = document.createElement("input");
   searchInput.type = "text";
   searchInput.placeholder = "Search City";
+  searchInput.classList.add("search-input");
   searchBox.appendChild(searchInput);
 }
