@@ -1,3 +1,6 @@
+import background from "./images/waterDroplets.jpg";
+import { loadWeatherContent } from "./weatherContent";
+
 export function loadHomePage(container) {
   const header = document.createElement("div");
   header.classList.add("header");
@@ -33,4 +36,10 @@ export function loadHomePage(container) {
   searchInput.placeholder = "Search City";
   searchInput.classList.add("search-input");
   searchBox.appendChild(searchInput);
+
+  const hero = document.createElement("div");
+  hero.classList.add("hero");
+  container.appendChild(hero);
+
+  loadWeatherContent(hero);
 }

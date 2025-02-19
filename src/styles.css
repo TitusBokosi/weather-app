@@ -5,7 +5,7 @@
   padding: 0;
 }
 * {
-  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -19,6 +19,8 @@
   color: white;
   align-content: center;
   justify-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 .title {
   font-size: 2rem;
@@ -47,9 +49,9 @@
 .search-box {
   border-radius: 1rem;
   border: solid white 1px;
-  padding-inline: 0.5rem;
+  padding: 0.5rem;
   background-color: white;
-  width: 20%;
+  width: fit-content;
   transform: transition 0.3s ease;
 }
 .search-box:hover {
@@ -59,9 +61,15 @@
   font-size: 0.8rem;
   border: none;
   outline: none;
-  width: 50%;
+  width: fit-content;
 }
 .search-input:focus {
   border: none;
   outline: none;
+}
+.hero {
+  background-image: url(./images/waterDroplets.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
