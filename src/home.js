@@ -1,5 +1,4 @@
 import background from "./images/waterDroplets.jpg";
-import { loadWeatherContent } from "./weatherContent";
 
 export function loadHomePage(container) {
   const header = document.createElement("div");
@@ -41,5 +40,7 @@ export function loadHomePage(container) {
   hero.classList.add("hero");
   container.appendChild(hero);
 
-  loadWeatherContent(hero);
+  const heroImageContainer = document.createElement("div");
+  heroImageContainer.classList.add("hero-image-container");
+  hero.appendChild(heroImageContainer);
 }
