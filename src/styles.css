@@ -33,6 +33,9 @@
   gap: 4rem;
   margin: 1rem;
 }
+button {
+  transition: transform 0.3s ease;
+}
 .nav > button {
   border: none;
   background: none;
@@ -40,13 +43,13 @@
   text-decoration: underline;
   min-width: fit-content;
   max-width: fit-content;
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
 }
-.nav > button:hover {
+button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
-.nav > button:active {
+button:active {
   transform: scale(0.9);
 }
 .search-box {
@@ -74,8 +77,11 @@
   background-image: url(./images/earth.jpg);
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  padding: 2rem;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 /* .weather-content {
   padding: 1rem;
@@ -91,14 +97,69 @@
   min-width: fit-content;
 } */
 .hero-container {
-  padding: 1rem;
   color: white;
+  width: 750px;
+  backdrop-filter: blur(10rem);
+  padding: 1rem;
+  height: 100%;
 }
 .hero-heading {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
 }
 .hero-text {
   font-size: 1.5rem;
+  font-weight: bold;
+}
+.current-city {
+  background-color: white;
+  height: fit-content;
+  margin: 1rem;
+  padding: 1rem;
+}
+.default-city-heading {
+  font-size: 1.5rem;
+  justify-self: center;
+}
+.default-city-weather-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+.default-city-container {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  height: 200px;
+  border-radius: 1rem;
+}
+.global-weather-container {
+  padding: 2rem;
+  justify-items: center;
+  align-content: center;
+}
+.local-weather-button {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: rgb(18, 111, 231);
+  border-radius: 1rem;
+  border: solid white 3px;
+  color: white;
+  font-weight: bold;
+}
+.world-map-container {
+  height: 300px;
+  width: 90%;
+  overflow: hidden;
+}
+.world-map {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.global-weather-heading {
+  margin: 1rem;
+  font-size: 3rem;
   font-weight: bold;
 }

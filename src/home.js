@@ -1,4 +1,6 @@
-import background from "./images/waterDroplets.jpg";
+import { searchCity } from "./searchCity";
+import { cityList } from "./storeCities";
+import { displayGlobalWeather } from "./displayGlobalWeather";
 
 export function loadHomePage(container) {
   const header = document.createElement("div");
@@ -59,7 +61,63 @@ export function loadHomePage(container) {
   heroContainer.appendChild(heroText);
   heroText.classList.add("hero-text");
 
+  const localWeatherButton = document.createElement("button");
+  localWeatherButton.textContent = " Your Local Weather";
+  heroContainer.appendChild(localWeatherButton);
+  localWeatherButton.classList.add("local-weather-button");
+
   const currentCity = document.createElement("div");
   currentCity.classList.add("current-city");
-  container.appendChild(currentCity);
+  hero.appendChild(currentCity);
+
+  async function getDefaultCity(city) {
+    await searchCity(city);
+
+    const defaultCityHeading = document.createElement("h2");
+    defaultCityHeading.textContent = cityList[0].country;
+    currentCity.appendChild(defaultCityHeading);
+    defaultCityHeading.classList.add("default-city-heading");
+
+    const defaultCityWeatherContainer = document.createElement("div");
+    defaultCityWeatherContainer.classList.add("default-city-weather-container");
+    currentCity.appendChild(defaultCityWeatherContainer);
+
+    const defaultCityTimeContainer = document.createElement("div");
+    defaultCityTimeContainer.classList.add("default-city-container");
+    defaultCityWeatherContainer.appendChild(defaultCityTimeContainer);
+
+    const defaultCityTimeZone = document.createElement("h3");
+    defaultCityTimeZone.textContent = cityList[0].timezone;
+    defaultCityTimeContainer.appendChild(defaultCityTimeZone);
+
+    const defaultCityTime = document.createElement("p");
+    defaultCityTime.textContent = cityList[0].time;
+    defaultCityTimeContainer.appendChild(defaultCityTime);
+
+    const defaultCityTemperatureCOntainer = document.createElement("div");
+    defaultCityTemperatureCOntainer.classList.add("default-city-container");
+    defaultCityWeatherContainer.appendChild(defaultCityTemperatureCOntainer);
+
+    const temperature = document.createElement("h2");
+    temperature.textContent = "temperature";
+    defaultCityTemperatureCOntainer.appendChild(temperature);
+
+    const temperatureValue = document.createElement("p");
+    temperatureValue.textContent = `${cityList[0].temperature} C`;
+    defaultCityTemperatureCOntainer.appendChild(temperatureValue);
+
+    const defaultCityHumidityContainer = document.createElement("div");
+    defaultCityHumidityContainer.classList.add("default-city-container");
+    defaultCityWeatherContainer.appendChild(defaultCityHumidityContainer);
+
+    const humidity = document.createElement("h2");
+    humidity.textContent = "humidity";
+    defaultCityHumidityContainer.appendChild(humidity);
+
+    const humidityValue = document.createElement("p");
+    humidityValue.textContent = cityList[0].humidity;
+    defaultCityHumidityContainer.appendChild(humidityValue);
+  }
+  getDefaultCity("lilongwe");
+  displayGlobalWeather(container);
 }
