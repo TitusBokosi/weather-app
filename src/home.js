@@ -40,7 +40,26 @@ export function loadHomePage(container) {
   hero.classList.add("hero");
   container.appendChild(hero);
 
-  const heroImageContainer = document.createElement("div");
-  heroImageContainer.classList.add("hero-image-container");
-  hero.appendChild(heroImageContainer);
+  // const heroImageContainer = document.createElement("div");
+  // heroImageContainer.classList.add("hero-image-container");
+  // hero.appendChild(heroImageContainer);
+
+  const heroContainer = document.createElement("div");
+  heroContainer.classList.add("hero-container");
+  hero.appendChild(heroContainer);
+
+  const heroHeading = document.createElement("h2");
+  heroHeading.textContent = "The Odin Weather, your reliable weather app";
+  heroContainer.appendChild(heroHeading);
+  heroHeading.classList.add("hero-heading");
+
+  const heroText = document.createElement("p");
+  heroText.textContent =
+    "Get the most accurate weather information for your city and many other cities around the world.";
+  heroContainer.appendChild(heroText);
+  heroText.classList.add("hero-text");
+
+  const currentCity = document.createElement("div");
+  currentCity.classList.add("current-city");
+  container.appendChild(currentCity);
 }

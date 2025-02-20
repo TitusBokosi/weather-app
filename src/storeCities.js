@@ -1,5 +1,7 @@
-const cities = [];
-function storeCities(newCity) {
-  cities.push(newCity);
+const cityList = [];
+
+export function storeCity(city) {
+  cityList.push(city);
 }
-export { storeCities };
+
+export { cityList };

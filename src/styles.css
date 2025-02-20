@@ -77,10 +77,10 @@
   height: 100vh;
   padding: 2rem;
 }
-.weather-content {
+/* .weather-content {
   padding: 1rem;
-}
-.city-name {
+} */
+/* .city-name {
   justify-self: center;
   background-color: rgb(18, 111, 231);
   padding: 1rem;
@@ -89,4 +89,16 @@
   width: 10%;
   text-align: center;
   min-width: fit-content;
+} */
+.hero-container {
+  padding: 1rem;
+  color: white;
+}
+.hero-heading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.hero-text {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
