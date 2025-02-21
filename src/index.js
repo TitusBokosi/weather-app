@@ -6,7 +6,7 @@ import { loadHomePage } from "./home";
 // import { cityList } from "./storeCities";
 
 const app = document.querySelector(".app");
-
+let fix = 1;
 loadHomePage(app);
 
 // async function loadCity(city) {
