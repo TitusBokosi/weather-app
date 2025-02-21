@@ -77,10 +77,11 @@ button:active {
   background-image: url(./images/earth.jpg);
   background-size: cover;
   background-position: center;
+  backdrop-filter: blur(10rem);
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1rem;
 }
 /* .weather-content {
@@ -99,7 +100,6 @@ button:active {
 .hero-container {
   color: white;
   width: 750px;
-  backdrop-filter: blur(10rem);
   padding: 1rem;
   height: 100%;
 }
@@ -162,4 +162,27 @@ button:active {
   margin: 1rem;
   font-size: 3rem;
   font-weight: bold;
+}
+.city-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(fit-content, 1fr));
+  gap: 1rem;
+  margin: 1rem;
+}
+.city-card {
+  display: grid;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  height: 5rem;
+  align-content: center;
+  justify-items: center;
+  padding: 1rem;
+}
+.footer {
+  background-color: black;
+  justify-items: center;
+  align-content: center;
+  height: 20rem;
+  color: white;
 }

@@ -103,7 +103,7 @@ export function loadHomePage(container) {
     defaultCityTemperatureCOntainer.appendChild(temperature);
 
     const temperatureValue = document.createElement("p");
-    temperatureValue.textContent = `${cityList[0].temperature} C`;
+    temperatureValue.textContent = `${cityList[0].temperature} `;
     defaultCityTemperatureCOntainer.appendChild(temperatureValue);
 
     const defaultCityHumidityContainer = document.createElement("div");

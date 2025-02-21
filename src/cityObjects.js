@@ -14,7 +14,7 @@ export function createCityObject(
       country: country,
       timezone: timezone,
       time: time,
-      temperature: temperature,
+      temperature: `${((temperature - 32) * (5 / 9)).toFixed(2)} \u00B0C`,
       humidity: humidity,
     };
   }
