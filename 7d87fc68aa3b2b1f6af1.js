@@ -6,8 +6,15 @@ import { loadHomePage } from "./home";
 // import { cityList } from "./storeCities";
 
 const app = document.querySelector(".app");
-let fix = 1;
 loadHomePage(app);
+
+const footer = document.createElement("div");
+footer.classList.add("footer");
+app.appendChild(footer);
+
+const footerText = document.createElement("p");
+footerText.textContent = "© 2021 The Odin Project";
+footer.appendChild(footerText);
 
 // async function loadCity(city) {
 //   await searchCity(city);
