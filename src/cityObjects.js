@@ -6,7 +6,8 @@ export function createCityObject(
   timezone,
   time,
   temperature,
-  humidity
+  humidity,
+  description
 ) {
   function makeCity() {
     return {
@@ -16,6 +17,7 @@ export function createCityObject(
       time: time,
       temperature: `${((temperature - 32) * (5 / 9)).toFixed(2)} \u00B0C`,
       humidity: humidity,
+      description: description,
     };
   }
   const city = makeCity();

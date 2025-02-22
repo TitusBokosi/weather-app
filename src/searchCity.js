@@ -12,7 +12,8 @@ export async function searchCity(city) {
       data.timezone,
       data.days[0].datetime,
       data.days[0].temp,
-      data.days[0].humidity
+      data.days[0].humidity,
+      data.description
     );
   } catch (error) {
     alert("Unable to fetch data for " + city);

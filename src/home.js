@@ -1,6 +1,9 @@
 import { searchCity } from "./searchCity";
 import { cityList } from "./storeCities";
 import { displayGlobalWeather } from "./displayGlobalWeather";
+// import { cityList } from "./storeCities";
+import { displaySearchResults } from "./displaySearchResults";
+import { displayAboutUs } from "./aboutUs";
 
 export function loadHomePage(container) {
   const header = document.createElement("div");
@@ -51,7 +54,7 @@ export function loadHomePage(container) {
   hero.appendChild(heroContainer);
 
   const heroHeading = document.createElement("h2");
-  heroHeading.textContent = "The Odin Weather, your reliable weather app";
+  heroHeading.textContent = "The Odin Weather, your reliable weather site";
   heroContainer.appendChild(heroHeading);
   heroHeading.classList.add("hero-heading");
 
@@ -117,7 +120,37 @@ export function loadHomePage(container) {
     const humidityValue = document.createElement("p");
     humidityValue.textContent = cityList[0].humidity;
     defaultCityHumidityContainer.appendChild(humidityValue);
+
+    const descriptions = document.createElement("p");
+    descriptions.textContent = `${cityList[0].description}`;
+    currentCity.appendChild(descriptions);
+    descriptions.classList.add("description");
   }
   getDefaultCity("lilongwe");
-  displayGlobalWeather(container);
+
+  const globalWeatherContainer = document.createElement("div");
+  globalWeatherContainer.classList.add("global-weather-container");
+  container.appendChild(globalWeatherContainer);
+
+  displayGlobalWeather(globalWeatherContainer);
+
+  about.addEventListener("click", () => {
+    displayAboutUs(globalWeatherContainer);
+  });
+
+  searchInput.addEventListener("keyup", async (e) => {
+    cityList.length = 0;
+    try {
+      if (e.key === "Enter") {
+        await searchCity(searchInput.value);
+        displaySearchResults(currentCity, hero);
+      }
+    } catch (error) {
+      alert("Unable to fetch data for " + searchInput.value);
+    }
+  });
+  home.addEventListener("click", () => {
+    globalWeatherContainer.innerHTML = "";
+    displayGlobalWeather(globalWeatherContainer);
+  });
 }
