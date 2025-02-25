@@ -4,7 +4,8 @@ import { displayGlobalWeather } from "./displayGlobalWeather";
 // import { cityList } from "./storeCities";
 import { displaySearchResults } from "./displaySearchResults";
 import { displayAboutUs } from "./aboutUs";
-
+import { displayFooter } from "./displayFooter";
+// import { displayContact } from "./displayContact";
 export function loadHomePage(container) {
   const header = document.createElement("div");
   header.classList.add("header");
@@ -27,9 +28,9 @@ export function loadHomePage(container) {
   about.textContent = "About us";
   nav.appendChild(about);
 
-  const contact = document.createElement("button");
-  contact.textContent = "Contact";
-  nav.appendChild(contact);
+  // const contact = document.createElement("button");
+  // contact.textContent = "Contact";
+  // nav.appendChild(contact);
 
   const searchBox = document.createElement("div");
   searchBox.classList.add("search-box");
@@ -135,6 +136,8 @@ export function loadHomePage(container) {
   displayGlobalWeather(globalWeatherContainer);
 
   about.addEventListener("click", () => {
+    hero.remove();
+    localWeatherButton.remove();
     displayAboutUs(globalWeatherContainer);
   });
 
@@ -143,6 +146,8 @@ export function loadHomePage(container) {
     try {
       if (e.key === "Enter") {
         await searchCity(searchInput.value);
+        container.innerHTML = "";
+        loadHomePage(container);
         displaySearchResults(currentCity, hero);
       }
     } catch (error) {
@@ -150,7 +155,12 @@ export function loadHomePage(container) {
     }
   });
   home.addEventListener("click", () => {
-    globalWeatherContainer.innerHTML = "";
-    displayGlobalWeather(globalWeatherContainer);
+    container.innerHTML = "";
+    loadHomePage(container);
   });
+
+  // contact.addEventListener("click", () => {
+  //   displayContact(globalWeatherContainer);
+  // });
+  displayFooter(container);
 }
