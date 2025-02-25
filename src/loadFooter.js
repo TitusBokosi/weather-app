@@ -1,9 +1,9 @@
-export function displayFooter(app) {
+export function loadFooter(app) {
   const footer = document.createElement("div");
-  footer.classList.add("footer");
   app.appendChild(footer);
+  footer.classList.add("footer");
 
   const footerText = document.createElement("p");
-  footerText.textContent = "© 2021 The Odin Project";
+  footerText.textContent = "@the odin project";
   footer.appendChild(footerText);
 }
