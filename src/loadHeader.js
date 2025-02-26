@@ -1,3 +1,4 @@
+import { searchCity } from "./searchCity";
 export function loadHeader(app) {
   const header = document.createElement("div");
   header.classList.add("header");
@@ -25,6 +26,14 @@ export function loadHeader(app) {
   toggleButton.classList.add("toggle-button");
   toggleButton.setAttribute("id", "toggle-button");
   toggleButton.setAttribute("type", "button");
-
   app.appendChild(header);
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const searchName = searchInput.value;
+      searchInput.value = "";
+      searchCity(searchName, app);
+    }
+  });
 }
