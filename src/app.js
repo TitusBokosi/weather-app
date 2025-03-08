@@ -1,6 +1,7 @@
 import { loadHeader } from "./loadHeader.js";
 import { loadHero } from "./loadHero.js";
 import { loadFooter } from "./loadFooter.js";
+import { loadAbout } from "./loadAbout.js";
 
 export function app(html) {
   const container = document.createElement("div");
@@ -8,6 +9,7 @@ export function app(html) {
   html.appendChild(container);
 
   loadHeader(container);
+  loadAbout(container);
   loadHero(container);
   loadFooter(container);
 }
