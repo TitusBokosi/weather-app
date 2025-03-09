@@ -21,6 +21,7 @@
   padding: 1rem;
   color: rgb(5, 114, 238);
   max-width: 100%;
+  font-size: 1.5rem;
 }
 .actions-container {
   display: flex;
@@ -46,6 +47,30 @@
   border: none;
   width: 50%;
   max-height: fit-content;
+}
+.about {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 2rem;
+}
+.heading-container {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.about-heading {
+  font-size: 2.5rem;
+}
+.default-city {
+  width: fit-content;
+  padding: 1rem;
+  background-color: rgb(5, 114, 238);
+  color: white;
+  border-radius: 1rem;
 }
 .hero {
   margin: 1rem;

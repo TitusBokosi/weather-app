@@ -5,7 +5,7 @@ export function loadAbout(display) {
   about.classList.add("about");
 
   const headingContainer = document.createElement("div");
-  headingContainer.classList.add = "heading-container";
+  headingContainer.classList.add("heading-container");
   about.appendChild(headingContainer);
 
   const heading = document.createElement("h1");
