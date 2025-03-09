@@ -55,6 +55,12 @@
   padding: 1rem;
   gap: 2rem;
 }
+.home-hero {
+  background-image: url("./images/city.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .heading-container {
   width: 800px;
   display: flex;

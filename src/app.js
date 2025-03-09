@@ -8,8 +8,11 @@ export function app(html) {
   container.classList.add("container");
   html.appendChild(container);
 
-  loadHeader(container);
-  loadAbout(container);
+  const hero = document.createElement("div");
+  hero.classList.add("home-hero");
+  container.appendChild(hero);
+  loadHeader(hero);
+  loadAbout(hero);
   loadHero(container);
   loadFooter(container);
 }
