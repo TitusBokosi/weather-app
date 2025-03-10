@@ -17,11 +17,10 @@ export async function displayDefaultCity(display) {
   defaultCityWeatherContent.classList.add("default-city-weather-content");
   defaultCity.appendChild(defaultCityWeatherContent);
 
-  const quickCards = document.createElement("div");
-  quickCards.classList.add("quick-cards");
-
   const quickCardsArray = ["temp", "humidity", "conditions"];
   quickCardsArray.forEach((element, index) => {
+    const quickCards = document.createElement("div");
+    quickCards.classList.add("quick-cards");
     const heading = document.createElement("h3");
     heading.textContent = quickCardsArray[index];
     quickCards.appendChild(heading);
@@ -29,6 +28,7 @@ export async function displayDefaultCity(display) {
     const value = document.createElement("p");
     value.textContent = city.days[0][element];
     quickCards.appendChild(value);
+
+    defaultCityWeatherContent.appendChild(quickCards);
   });
-  defaultCityWeatherContent.appendChild(quickCards);
 }

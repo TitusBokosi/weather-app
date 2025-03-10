@@ -9,13 +9,14 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-.container {
-  padding: 1rem;
-}
+
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  background-color: rgba(240, 248, 255, 0.9);
+  position: sticky;
+  top: 0;
 }
 .header > h1 {
   padding: 1rem;
@@ -43,7 +44,7 @@
 .search-input {
   border-radius: 1rem;
   padding: 0.5rem;
-  outline: solid black 2px;
+  outline: solid rgb(5, 114, 238) 2px;
   border: none;
   width: 50%;
   max-height: fit-content;
@@ -52,14 +53,18 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 1rem;
+  padding: 2rem;
+  padding-top: 4rem;
   gap: 2rem;
+  /*gap: 2rem; */
 }
 .home-hero {
   background-image: url("./images/city.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
 }
 .heading-container {
   width: 800px;
@@ -67,9 +72,11 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  height: fit-content;
 }
 .about-heading {
-  font-size: 2.5rem;
+  font-size: 4rem;
+  font-weight: bold;
 }
 .default-city {
   width: fit-content;
@@ -78,9 +85,17 @@
   color: white;
   border-radius: 1rem;
 }
+.default-city-weather-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem;
+  gap: 1rem;
+}
+
 .hero {
-  margin: 1rem;
-  background-color: azure;
+  background-color: white;
+  margin-top: 2rem;
 }
 .hero-title {
   font-size: 2rem;
@@ -96,7 +111,9 @@
   box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.1);
   padding: 1rem;
   overflow-x: hidden;
-  background: white;
+  background: aliceblue;
+  border-radius: 1rem;
+  margin-inline: 2rem;
 }
 .weather-details {
   padding: 1rem;
@@ -125,6 +142,9 @@
   min-width: fit-content;
   font-size: 0.9rem;
   padding: 1rem;
+}
+p {
+  color: rgb(82, 81, 81);
 }
 .city-heading {
   color: rgb(5, 114, 238);
