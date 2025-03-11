@@ -25,9 +25,9 @@ export async function displayWeatherCards(display) {
       temperature.textContent = "Temp: " + city.days[0].temp;
       todayWeather.append(temperature);
 
-      const humidity = document.createElement("p");
-      humidity.textContent = "Hum: " + city.days[0].humidity;
-      todayWeather.appendChild(humidity);
+      const image = document.createElement("img");
+      image.src = city.getTempImage();
+      todayWeather.appendChild(image);
 
       const description = document.createElement("p");
       description.classList.add("description");
@@ -55,6 +55,10 @@ export async function displayWeatherCards(display) {
         ];
         const date = new Date(day.datetime);
         dayName.textContent = dayss[date.getDay()];
+
+        // const generalImage = document.createElement("img");
+        // generalImage.src = city.getGeneralImage();
+        // dayName.appendChild(generalImage);
 
         const dayTem = document.createElement("p");
         dayTem.textContent = "temp: " + day.temp;

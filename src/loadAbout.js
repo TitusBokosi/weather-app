@@ -10,7 +10,7 @@ export function loadAbout(display) {
 
   const heading = document.createElement("h1");
   heading.classList.add("about-heading");
-  heading.textContent = `Get the most accurate weather content `;
+  heading.textContent = `The Odin Weather. Accurate, Real Time Weather Content `;
   headingContainer.appendChild(heading);
 
   const aboutText = document.createElement("p");

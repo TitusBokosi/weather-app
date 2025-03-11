@@ -1,10 +1,11 @@
 import { searchCity } from "./searchCity";
+import logo from "./images/logo-blue.svg";
 export function loadHeader(app) {
   const header = document.createElement("div");
   header.classList.add("header");
-  const headerTittle = document.createElement("h1");
-  headerTittle.innerText = "The Odin Weather App";
-  header.appendChild(headerTittle);
+  const headerLogo = document.createElement("img");
+  headerLogo.src = logo;
+  header.appendChild(headerLogo);
 
   const actionsContainer = document.createElement("div");
   header.appendChild(actionsContainer);
@@ -20,12 +21,13 @@ export function loadHeader(app) {
   searchButton.innerText = "Search";
   searchInput.appendChild(searchButton);
 
-  const toggleButton = document.createElement("button");
-  toggleButton.innerText = "Toggle";
-  actionsContainer.appendChild(toggleButton);
-  toggleButton.classList.add("toggle-button");
-  toggleButton.setAttribute("id", "toggle-button");
-  toggleButton.setAttribute("type", "button");
+  // const toggleButton = document.createElement("button");
+  // toggleButton.innerText = "Toggle";
+  // actionsContainer.appendChild(toggleButton);
+  // toggleButton.classList.add("toggle-button");
+  // toggleButton.setAttribute("id", "toggle-button");
+  // toggleButton.setAttribute("type", "button");
+
   app.appendChild(header);
 
   searchInput.addEventListener("keydown", (e) => {
