@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ErrorContainer } from "./Error";
 
 export const GlobalNews = () => {
   const [loading, setLoading] = useState(true);
@@ -6,9 +7,11 @@ export const GlobalNews = () => {
   const [err, setErr] = useState(null);
 
   const fetchNews = async () => {
+    const key = import.meta.env.VITE_NEWS_KEY;
+    console.log(key);
     try {
       const res = await fetch(
-        `https://newsapi.org/v2/everything?q=weather&language=en&apiKey=430a4244a19f40b7aa4519047bf39768&pageSize=5`
+        `https://newsapi.org/v2/everything?q=weather&language=en&apiKey=${key}&pageSize=5`
       );
       const data = await res.json();
       if (data) {
@@ -24,43 +27,50 @@ export const GlobalNews = () => {
         setNews(res.articles);
       })
       .catch((err) => {
-        setErr("Failed to get news");
+        setErr("Failed to get weather news");
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
-  console.log(news);
-  if (loading) {
-    return (
-      <>
-        <p>Loading news</p>
-      </>
-    );
-  }
-  //   if (err) {
-  //     return <Error message="failed"></Error>;
-  //   }
+
   return (
-    <div className="news flex flex-col gap-10 p-5">
-      {news.map((news) => (
-        <div className="main-news shadow-gray-500">
-          <div className="news-header flex flex-col gap-2 ">
-            <h3>{news.title}</h3> <p>{news.author}</p>
-            <p>{news.source.name}</p>
-          </div>
-          <img src={news.urlToImage} alt="" />
-          <h3>{news.description}</h3>
-          {/* <p>{news.content}</p> */}
-          <div className="link text-white p-2 mt-2 rounded-2xl bg-blue-600 text-center">
-            <a href={news.url} className="">
-              {" "}
-              <span className="text-white">Continue reading</span>
-            </a>
-          </div>
+    <div className="global-news text-left bg-white pt-5 pb-5 flex flex-col items-center justify-center gap-5 lg:w-5xl">
+      <div className="header text-center">
+        {" "}
+        <h2>Global Weather News</h2>
+        <p>Weather news around the world</p>
+      </div>
+      {loading ? (
+        <p>loading</p>
+      ) : err ? (
+        <ErrorContainer message={err}></ErrorContainer>
+      ) : (
+        <div className="news flex flex-col items-center justify-center gap-10  ">
+          {news.map((news) => (
+            <div className="main-news shadow-gray-500 bg-white p-5  flex flex-col items-center justify-center gap-5 lg:w-2xl">
+              <div className="content tex-left">
+                {" "}
+                <div className="news-header  flex flex-col gap-2  ">
+                  <h3>{news.title}</h3>
+                  <div className="title-author text-right w-fit flex gap-5">
+                    {news.author && <p>{news.author}</p>}
+                    <p>{news.source.name}</p>
+                  </div>
+                </div>
+                <img src={news.urlToImage} alt="" />
+                <h3>{news.description}</h3>
+              </div>
+              <div className="link text-white p-2 mt-2 rounded-2xl w-full bg-blue-600 text-center md:w-2xl md:p-4">
+                <a href={news.url} className="">
+                  {" "}
+                  <span className="text-white">Continue reading</span>
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-      <div className="other-news">{}</div>
+      )}
     </div>
   );
 };

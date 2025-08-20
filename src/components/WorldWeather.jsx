@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../services/globalContext";
 import { WeatherCard } from "./WeatherCard";
+import { ErrorContainer } from "./Error";
 
 export const WorldWeather = () => {
   const [citiesData, setCitiesData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { fetchCityData } = useContext(GlobalContext);
+  const [err, setErr] = useState(null);
   const cities = [
-    "capetown",
-    "london",
-    "tokyo",
-    "nairobi",
-    "madrid",
-    "paris",
-    "dubai",
-    "favela",
+    "Capetown",
+    "London",
+    "Tokyo",
+    "Nairobi",
+    "Madrid",
+    "Paris",
+    "Dubai",
+    "Favela",
   ];
 
   useEffect(() => {
@@ -25,33 +27,35 @@ export const WorldWeather = () => {
           const data = await fetchCityData(city);
           allData.push(data);
         } catch (err) {
-          console.log(err);
+          throw err;
         }
       }
     }
-    if (fetchCityData) {
-      getCityData(cities)
-        .then(() => {
-          console.log(allData);
-          setCitiesData(allData);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
-    }
+
+    getCityData(cities)
+      .then(() => {
+        setCitiesData(allData);
+      })
+      .catch((err) => setErr("Failed to get weather data"))
+      .finally(() => setLoading(false));
   }, [fetchCityData]);
+
   return (
-    <div className="city-data">
+    <div className="city-data world-data text-center shadow-2xs p-2 pt-5 pb-5 bg-white mb-10 flex flex-col items-center justify-center gap-5 lg:w-5xl">
+      <div className="header">
+        {" "}
+        <h2>Word Weather</h2>
+        <p>Weather forecast around the world</p>
+      </div>
       {loading ? (
         <p>Loading world data</p>
+      ) : err ? (
+        <ErrorContainer message={err}></ErrorContainer>
       ) : (
-        <div className="world-data text-center shadow-2xs pt-5 pb-5">
-          <h2>Word Weather</h2>
-          <p>Weather forecast around the world</p>
-          <div className="city-dat grid grid-flow-col auto-cols-max gap-5 overflow-scroll">
-            {citiesData.map((city) => (
-              <WeatherCard cityData={city}></WeatherCard>
-            ))}
-          </div>
+        <div className="city-dat flex items-center justify-center gap-5 flex-wrap w-full">
+          {citiesData.map((city) => (
+            <WeatherCard cityData={city}></WeatherCard>
+          ))}
         </div>
       )}
     </div>

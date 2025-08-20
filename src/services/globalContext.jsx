@@ -45,8 +45,9 @@ export function ContextProvider({ children }) {
 
   const fetchCityData = useCallback(async (name) => {
     try {
+      const key = import.meta.env.VITE_WEATHER_KEY;
       const res = await fetch(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${name}?key=ZRXKYVAT3CVKBY378K9LWNYF3&unitGroup=metric`
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${name}?key=${key}&unitGroup=metric`
       );
       const data = await res.json();
 
