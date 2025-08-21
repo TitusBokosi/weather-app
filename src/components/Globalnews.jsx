@@ -7,12 +7,9 @@ export const GlobalNews = () => {
   const [err, setErr] = useState(null);
 
   const fetchNews = async () => {
-    const key = import.meta.env.VITE_NEWS_KEY;
-    console.log(key);
     try {
-      const res = await fetch(
-        `https://newsapi.org/v2/everything?q=weather&language=en&apiKey=${key}&pageSize=5`
-      );
+      const res = await fetch(`/api/news?q=weather&language=en&pageSize=5`);
+
       const data = await res.json();
       if (data) {
         return data;
